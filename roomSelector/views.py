@@ -24,7 +24,7 @@ def home_page():
             template = 'manager.html'
         else:
             template = 'member.html'
-        return flask.render_template('manager.html', **params)
+        return flask.render_template(template, **params)
     return flask.render_template('cover.html')
 
 @app.route('/endit')

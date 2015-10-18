@@ -2,8 +2,16 @@
 
 {% block body %}	
 <h1 id="title">Commonplace: Member</h1>
-<h2>Home</h2>
 			
+      {% if selectionOn %}
+      <h2>Room selection is <span style="color:green;">on</span></h2>
 
+
+      <img src="/static/img/first_floor.jpg">
+      <img src="/static/img/second_floor.jpg">
+
+      {% else %}
+      <h2>Room selection is <span style="color:red;">off</span></h2>
+      {% endif %}
 		
 {% endblock %}
