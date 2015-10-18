@@ -1,5 +1,6 @@
 db_design.txt
-
+*.csv
+*.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod~]

@@ -47,10 +47,12 @@ if __name__ == '__main__':
 
         u_admin = User(name='luis', email='luis@gmail.com', password_hash='test')
         u_admin.type = ut_admin
+        u_admin.house_points = 25
         db_session.add(u_admin)
 
         u_common = User(name='raj', email='raj@gmail.com', password_hash='test')
         u_common.type = ut_common
+        u_common.house_points = 25
         db_session.add(u_common)
 
         h = House()

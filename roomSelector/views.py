@@ -10,25 +10,32 @@ import state
 
 @app.route('/')
 def home_page():
-    user_id = flask.session.get('logged_in')
-    user = None
-    user_is_admin = None
-    if user_id:
-        user = User.query.filter(User.id == user_id).first()
+    params = {
+        'user_id': flask.session.get('logged_in'),
+        'user': None,
+        'user_is_admin': None,
+        'selectionOn': state.selectionStatus(),
+        'people': User.query.filter (User.is_live_in == True).order_by(User.house_points.desc()),
+    }
+    if params['user_id']:
+        user = User.query.filter(User.id == params['user_id']).first()
         is_admin = user.type.name == 'admin'
         if is_admin:
-            return flask.render_template('manager.html', user=user, selectionOn=state.selectionStatus())
+            template = 'manager.html'
         else:
-            return flask.render_template('member.html', user=user)
+            template = 'member.html'
+        return flask.render_template('manager.html', **params)
     return flask.render_template('cover.html')
 
 @app.route('/endit')
 def endit():
+    print 'endit'
     state.stopSelection()
     return flask.redirect(flask.url_for('home_page'))
 
 @app.route('/startit')
 def startit():
+    print 'startit'
     state.startSelection()
     return flask.redirect(flask.url_for('home_page'))
 

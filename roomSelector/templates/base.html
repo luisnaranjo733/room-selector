@@ -33,12 +33,9 @@
   <div id="housepoints">
   <p>house points</p>
   <ol>
-    <li>Alex: 70</li>
-    <li>Joey: 60</li>
-    <li>Tyler: 50</li>
-    <li>Jason: 50</li>
-    <li>Glen: 45</li>
-    <li>Daniel: 35</li>
+    {% for person in people %}
+    <li>{{ person.name }}: {{ person.house_points }}</li>
+    {% endfor %}
   </ol>
 </div>
     <div class="container">
