@@ -26,8 +26,8 @@ nav{
 #gate {
 	border-style: solid;
 	border-width: 1px;
-	height: 300px;
-	width: 300px;
+	height: 600px;
+	width: 600px;
 	margin: 100px;
 	text-align: center;
 	background-color: #66CCFF;
@@ -50,7 +50,7 @@ nav{
 	max-width: 500px;
 	border-width: 2px;
 	border-style: solid;
-	margin: 100px;
+	margin: 50px;
 }
 
 
