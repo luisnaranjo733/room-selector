@@ -18,8 +18,8 @@ class User(Base):
 
     password_hash = Column(String(54))
 
-    user_type_id = Column(Integer, ForeignKey('user_type.id'))
-    user_type = relationship('UserType', backref='user')
+    type_id = Column(Integer, ForeignKey('user_type.id'))
+    type = relationship('UserType', backref='user')
 
     room_id = Column(Integer, ForeignKey('room.id'))
     room = relationship('Room', backref='user')
@@ -62,7 +62,7 @@ class Room(Base):
 
     def __repr__(self):
         return '<Room %r>' % (self.id)
-
+        
 
 class House(Base):
     __tablename__ = 'house'

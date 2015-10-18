@@ -5,3 +5,9 @@ Hello, World!
 <li>{{ user }}</li>
 {% endfor %}
 </ul>
+
+{% if session.logged_in %}
+<a href="/logout">Log out</a>
+{% else %}
+<a href="/login">Log in</a>
+{% endif %}

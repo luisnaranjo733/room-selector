@@ -30,8 +30,8 @@ if __name__ == '__main__':
         db_session.add(ut)
 
 
-        u = User(name='luis')
-        u.user_type = ut
+        u = User(name='luis', email='luis@gmail.com', password_hash='test')
+        u.type = ut
         db_session.add(u)
 
 
