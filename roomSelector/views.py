@@ -37,7 +37,7 @@ def chores_page():
 
 @app.route('/reimbursements')
 def reimbursements_page():
-    return flask.render_template('chores.html')
+    return flask.render_template('reimbursements.html')
 
 
 @app.route('/login', methods=['POST', 'GET'])
