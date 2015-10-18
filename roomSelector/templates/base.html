@@ -1,48 +1,68 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'><!--Font: Source Sans Pro-->
-<meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}Common Place{% endblock title %}</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="/static/css/style.css" rel="stylesheet">
+    {% block head %}
+    {% endblock head %}
 
-<link rel="icon" type="img/jpg" href="static/logo.jpg">
-
-<title>Commonplace</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    {% block header %}
-    {% endblock header %}
-    <link rel="stylesheet" href="static/css/style.css"/>
-</head>
-
-
-<body>
-  <nav>
-    <ul class="nav nav-pills nav-stacked">
-        <li><a href="/"><p><i class="fa fa-home icon"></i></p></a></li>
-        <li><a href="/rooms"><p><i class="fa fa-bed icon"></i></p></a></li>
-        <li><a href="/chores"><p><i class="fa fa-wrench icon"></i></p></a></li>
-        <li><a href="/reimbursements"><p><i class="fa fa-usd icon"></i></p></a></li>
-        {% if session.logged_in %}
-        <li><a href="/logout"><p><i class="fa fa-user icon"></i></p></a></li>
-        {% else %}
-        <li><a href="/login"><p><i class="fa fa-user icon"></i></p></a></li>
-        {% endif %}
-      </ul>
+    <nav>
+        <div id="horizontal_nav">
+        <ul>
+            <li><a href="#story-section-anchor">STORY</a></li>
+            <li><a href="order.html">ORDER</a></li>
+        </ul>
+        </div>
     </nav>
-  <header>
-  <div id="housepoints">
-  <p>house points</p>
-  <ol>
-    {% for person in people %}
-    <li>{{ person.name }}: {{ person.house_points }}</li>
-    {% endfor %}
-  </ol>
-</div>
-    <div class="container">
-    {% block body %}
-    {% endblock %}
-    </div>
-  </header>
-    
 
-</body>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="header">
+            <h1>Common Place</h1>
+            <p class="hidden-xs">Living, made simple.</p>
+        </div>
+
+    <div class="headline">
+
+        <i class="fa fa-user icon"></i>
+        <br><br>
+        <div style="color:#654321;display:inline;">
+          <form >
+          User ID :  <input type="text" name="user_id" />
+          <br>
+          Password:  <input type="password" name="password" />
+          </form>
+        </div>
+
+        <!--
+        Also on screen sizes of 768 pixels and wider, the font size used for the text should grow to 1.25em, the text should be center aligned, and the blank space on top and bottom should increase to 3em. This will give it a more spacious feeling, drawing the eye towards it.
+        -->
+
+    </div>
+
+    {% block body %}
+    {% endblock body %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% block js %}
+    {% endblock js %}
+  </body>
+</html>

@@ -1,85 +1,210 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,300");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300italic,300");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+/* START OF BASE PAGE STYLES */
+body {
+  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: #E9EAEE; }
 
-body{
-	background-color: white;
-	font-family: Source Sans Pro;
-	text-align: center;
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px; }
 
+h1, h2 {
+  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  color: black;
 }
 
-nav{
+h2 {
+  color: #bc6026; }
+
+/* END OF BASE PAGE STYLES */
+/* START OF NAVIGATION BAR STYLES */
+nav {
+  position: fixed;
+  background-color: #181c22;
+  color: white;
+  font-size: 16px;
+  /* Default nav text size */
+  padding: 15px;
+  width: 100%;
+  /* So navbar extends to entire width of viewport */
+  font-variant: small-caps;
+  z-index: 1; }
+
+/* Needed to keep nav at 15px separation from edge */
+#horizontal_nav ul {
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+#horizontal_nav li {
+  display: inline;
+  /* forces horizontal list */
+  padding-right: 0.5em;
+  /* default padding b/t chars*/ }
+
+#horizontal_nav a:link, #horizontal_nav a:visited {
+  color: white;
+  /* Idle link color */
+  text-decoration: none;
+  /* Prevents underlining on links */ }
+
+/* Hover TEXT link color */
+#horizontal_nav a:hover {
+  color: #d87e28; }
+
+/* Hover SVG link color */
+#horizontal_nav a:hover path {
+  fill: #d87e28; }
+
+p {
 	color: white;
-	background-color: black;
-	width: 5em;
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-	position: fixed;
-
-}
-#title{	
-	font-size: 5em;
-	text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-}
-#slogan{
-	font-style: italic;
-}
-#gate {
-	border-style: solid;
-	border-width: 1px;
-	height: 400px;
-	width: 400px;
-	margin: 50px;
-	text-align: center;
-	background-color: #66CCFF;
-	border-radius: 10px;
-
-}
-
-.gatebutton{
-	margin: 50px;
+	font-weight: 400;
 }
 
 
-.icon{
-	font-size: 1.5em;
-	margin: .3em;
+
+/* END OF NAVIGATION AREA STYLES */
+/* START OF HEADER AREA STYLES */
+/* Need to overwrite bootstrap width 
+   in order to inherit width of screen
+   for header image */
+.header {
+  padding-top: 3em;
+  padding-right: 3em;
+  opacity: 0.8;
+  /* Added to prevent crowding at right edge of screen */ }
+
+/* END OF HEADER AREA STYLES */
+/* START OF HEADLINE AREA STYLES */
+.headline {
+  font-style: italic; 
+  color:#654321;
+  display:inline;
 }
 
-.roomdiagram{
-	max-height: 500px;
-	max-width: 500px;
-	border-width: 2px;
-	border-style: solid;
-	margin: 50px;
-}
-#housepoints{
-	position: absolute;
-	position: fixed;
-	right: 0px;
-	border-bottom: none;
-	border-style: inset;
-	border-width: 4px;
-	border-right:none;
-	margin-top: 50px;
-	height: 100%;
-	width: 300px;
-	border-radius: 5px;
-	background-color: #66FFFF;
+.headline_icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-bottom: 1em;
+  /* Padding for the cafe description below */ }
 
-	
-}
+#svg_brown {
+  fill: #bc6026; }
 
-#housepoints p{
-	font-size: 2em;
-	color: black;
-}
+/* END OF HEADLINE AREA STYLES */
+/* START OF CAFE INFO SECTION */
+#cafe-info-section {
+  text-align: center;
+  /*background-color: $grey-background;*/
+  background-color: #dbdce3;
+  border-radius: 5px; }
 
+/* Used to pad the border with headline and section below */
+.cafe-info-section-row {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em; }
 
-li{
-	font-style: italic;
-	font-size: 1.3em;
-	text-align: left;
-	margin: .5em;
+/* Padding between columns when stacked 
+    Not significant when horizontal */
+.col {
+  padding-bottom: 1em; }
 
-}
+/* Space between the icons and the text/images below */
+.cafe-icons-padding {
+  padding-bottom: 1em; }
+
+/* Size of cafe info icons */
+.cafe-info-icons {
+  width: 2em;
+  height: 2em; }
+
+.padding-in-column {
+  padding-bottom: 1em; }
+
+/* END OF CAFE INFO SECTION */
+/* START OF MENU SECTION */
+#menu-section {
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+#menu-section dd {
+  font-style: italic;
+  padding-left: 1em; }
+
+/* END OF MENU SECTION */
+/* START OF STORY SECTION */
+#story-section {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  background-color: #dbdce3; }
+
+#story-img {
+  float: right;
+  max-height: 300px;
+  margin-left: 1em;
+  border-radius: 5px; }
+
+/* END OF STORY SECTION */
+/* START OF FOOTER SECTION */
+footer {
+  border-top: 3px solid #d87e28;
+  background-color: #afb3c2;
+  font-size: 12px;
+  padding: 1em; }
+
+/* END OF FOOTER SECTION */
+@media screen and (min-width: 768px) {
+  /* START OF BASE PAGE STYLES */
+  body {
+    font-size: 20px; }
+
+  h2 {
+    text-align: center;
+    padding-bottom: 1em;
+    /* h2 should have a blank space below equal to the height of the current font */ }
+
+  /* END OF BASE PAGE STYLES */
+  /* START OF NAVIGATION BAR STYLES */
+  /* left and right padding should increase to 1em on screens 768 pixels and wider. */
+  #horizontal_nav li {
+    padding-right: 1em; }
+
+  nav {
+    /* Is this working? */
+    background-color: rgba(24, 28, 34, 0.8); }
+
+  /* END OF NAVIGATION BAR STYLES */
+  /* START HEADER STYLES */
+  .header {
+    background-color: #FF8C00;
+    background-size: cover;
+    min-height: 550px;
+    width: 100%;
+    color: white;
+    text-align: right; }
+
+  /* END HEADER STYLES */
+  /* START HEADLINE STYLES */
+  .headline {
+    font-size: 1.25em;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em; }
+
+  /* END HEADLINE STYLES */
+  /* START OF STORY SECTION */
+  #story-img {
+    max-height: 400px; }
+
+  /* END OF STORY SECTION */
+  /* START OF FOOTER SECTION */
+  .icon-attr {
+    text-align: right; }

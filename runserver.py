@@ -7,7 +7,7 @@ if DEBUG:
     host = '127.0.0.1'
     port = '5000'
 else:
-    host = '69.91.176.28'
+    host = '192.168.1.27'
     port = '80'
 
 if len(sys.argv) > 1:
