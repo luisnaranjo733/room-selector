@@ -7,6 +7,7 @@ from roomSelector.database import db_session
 
 @app.route('/')
 def home_page():
+    return flask.render_template('cover.html')
     user_id = flask.session.get('logged_in')
     user = None
     user_is_admin = None
@@ -14,10 +15,10 @@ def home_page():
         user = User.query.filter(User.id == user_id).first()
         is_admin = user.type.name == 'admin'
         if is_admin:
-            return flask.render_template('manager.html')
+            return flask.render_template('manager.html', user=user)
         else:
-            return flask.render_template('member.html')
-    return flask.render_template('gateway.html', user=user, user_is_admin=user_is_admin)
+            return flask.render_template('member.html', user=user)
+    return flask.render_template('gateway.html', user=user)
 
 @app.route('/member')
 def member_page():
@@ -58,7 +59,7 @@ def login():
                 
         flask.flash('Invalid username/password')  # this will only happen if auth failed
 
-    return flask.render_template('login.html', **params)
+    return flask.render_template('signin.html', **params)
     
 @app.route('/logout')
 def logout():

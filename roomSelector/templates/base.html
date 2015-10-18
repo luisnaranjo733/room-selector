@@ -9,7 +9,8 @@
 -->
 <title>Commonplace</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/style.css"/>
+    
+    <link rel="stylesheet" href="static/css/style.css"/>
 </head>
 
 
@@ -20,6 +21,11 @@
         <li><a href="/rooms"><p><i class="fa fa-bed icon"></i></p></a></li>
         <li><a href="/chores"><p><i class="fa fa-wrench icon"></i></p></a></li>
         <li><a href="/reimbursements"><p><i class="fa fa-usd icon"></i></p></a></li>
+        {% if session.logged_in %}
+        <li><a href="/logout"><p><i class="fa fa-user icon"></i></p></a></li>
+        {% else %}
+        <li><a href="/login"><p><i class="fa fa-user icon"></i></p></a></li>
+        {% endif %}
       </ul>
     </nav>
   <header>
