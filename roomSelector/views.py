@@ -7,14 +7,13 @@ from roomSelector.database import db_session
 
 @app.route('/')
 def home_page():
-    return flask.render_template('base.html')
     user_id = flask.session.get('logged_in')
     user = None
     user_is_admin = None
     if user_id:
         user = User.query.filter(User.id == user_id).first()
-        user_is_admin = user.type.name == 'admin'
-        if user_is_admin:
+        is_admin = user.type.name == 'admin'
+        if is_admin:
             return flask.render_template('manager.html')
         else:
             return flask.render_template('member.html')

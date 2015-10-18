@@ -14,6 +14,17 @@ def query_all_db_items():
     return results
 
 
+user_data = '''Hassam Farooq,farooh@uw.edu,40,common,1
+Glen Kabacheuski,glenk@uw.edu,45,common,2
+Jason Mukai,jmukai@uw.edu,50,common,3
+Eric Page,epage@uw.edu,45,admin,4
+Joey Bell,joeyb@uw.edu,60,common,5
+Alex Tielker,atielk@uw.edu,70,admin,6
+Tyler Nakagawa,tnak14@uw.edu,50,common,7
+Daniel Karpman,dkarp@uw.edu,35,common,8
+Ethan McGregor,ermmcgregor@uw.edu,25,common,9
+Nicholas Polsin,nickyp@uw.edu,39,common,10'''
+
 
 if __name__ == '__main__':
     if len(argv) == 1:
@@ -38,15 +49,39 @@ if __name__ == '__main__':
         u_admin.type = ut_admin
         db_session.add(u_admin)
 
-        u_common = User(name='nick', email='nick@gmail.com', password_hash='test')
+        u_common = User(name='raj', email='raj@gmail.com', password_hash='test')
         u_common.type = ut_common
         db_session.add(u_common)
-
 
         h = House()
         h.name =  'phi delts'
         h.manager = u_admin
         db_session.add(h)
+
+        for i in range(10):
+            room = Room()
+            room.house = h
+            db_session.add(room)
+            db_session.commit()
+
+
+        for line in user_data.split('\n'):
+            name, email, points, user_type, room = line.split(',')
+            room = Room.query.filter(Room.id == int(room)).first()
+            user_type = UserType.query.filter(UserType.name == user_type).first()
+            user = User(name=name)
+            user.email = email
+            user.house_points = points
+            user.type = user_type
+            user.room = room
+            db_session.add(user)
+            db_session.commit()
+
+
+
+
+
+
 
 
         r =  Room()
@@ -70,7 +105,4 @@ if __name__ == '__main__':
     exit(0)
 
 items = query_all_db_items()
-h = items['house'][0]
-r = items['room'][0]
-u = items['user'][0]
-ut = items['user_type'][0]
+
