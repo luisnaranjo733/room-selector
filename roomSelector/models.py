@@ -36,7 +36,7 @@ class User(Base):
                 setattr(self, attr, kwargs[attr])  # normal attributes
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<User %r, %r>' % (self.name, self.id)
     
     def setPassword(self, password):
         'Hash a given password and store it'
