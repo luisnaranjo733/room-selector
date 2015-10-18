@@ -1,32 +1,7 @@
-<!--Member Page -->
-<html lang="en">
-<head>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'><!--Font: Source Sans Pro-->
-<meta charset="UTF-8">
+{% extends "base.html" %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--
-<link rel="icon" type="img/png" href="img/page-icon.png">
--->
-<title>Commonplace</title>
-
+{% block body %}	
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="static/style.css"/>
-</head>
-
-
-<body>
-	<nav>
-		<ul class="nav nav-pills nav-stacked">
-  			<li><a href="/member"><p><i class="fa fa-home icon"></i></p></a></li>
-   			<li><a href="/rooms"><p><i class="fa fa-bed icon"></i></p></a></li>
-   			<li><a href="/chores"><p><i class="fa fa-wrench icon"></i></p></a></li>
-   			<li><a href="/reimbursements"><p><i class="fa fa-usd icon"></i></p></a></li>
-   		</ul>
-   	</nav>
-	<header>
-		<div class="container">
 			<h1 id="title">
 				Commonplace: Member
 			</h1>
@@ -34,8 +9,11 @@
 				Home
 			</h2>
 			
-		</div>
-	</header>
-	
 
-</body>
+	<div class="container">
+		<div id="housepoints">
+			<p>house points</p>
+		</div>
+		
+	</div>
+{% endblock %}
