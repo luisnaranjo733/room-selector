@@ -6,12 +6,38 @@ from roomSelector.database import db_session
 
 
 @app.route('/')
-def home():
+def home_page():
     user_id = flask.session.get('logged_in')
     user = None
+    user_is_admin = None
     if user_id:
         user = User.query.filter(User.id == user_id).first()
-    return flask.render_template('home.html', user=user)
+        user_is_admin = user.type.name == 'admin'
+    return flask.render_template('gateway.html', user=user, user_is_admin=user_is_admin)
+
+@app.route('/member')
+def member_page():
+    return flask.render_template('member.html')
+
+@app.route('/manager')
+def manager_page():
+    return flask.render_template('manager.html')
+
+@app.route('/rooms')
+def room_page():
+    return flask.render_template('rooms.html')
+
+@app.route('/chores')
+def chores_page():
+    return flask.render_template('chores.html')
+
+@app.route('/reimbursements')
+def reimbursements_page():
+    return flask.render_template('chores.html')
+
+
+
+
 
  
 @app.route('/login', methods=['POST', 'GET'])
