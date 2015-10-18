@@ -1,4 +1,8 @@
-
+{% if user_is_admin %}
+ADMIN
+{% else %}
+NOT ADMIN
+{% endif %}
 {% if session.logged_in %}
 <a href="/logout">Log out</a>
 {% else %}
