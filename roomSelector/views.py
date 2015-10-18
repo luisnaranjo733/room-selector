@@ -7,12 +7,17 @@ from roomSelector.database import db_session
 
 @app.route('/')
 def home_page():
+    return flask.render_template('base.html')
     user_id = flask.session.get('logged_in')
     user = None
     user_is_admin = None
     if user_id:
         user = User.query.filter(User.id == user_id).first()
         user_is_admin = user.type.name == 'admin'
+        if user_is_admin:
+            return flask.render_template('manager.html')
+        else:
+            return flask.render_template('member.html')
     return flask.render_template('gateway.html', user=user, user_is_admin=user_is_admin)
 
 @app.route('/member')
@@ -36,10 +41,6 @@ def reimbursements_page():
     return flask.render_template('chores.html')
 
 
-
-
-
- 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     params = {}
@@ -54,7 +55,7 @@ def login():
             if user.checkPassword(password):
                 flask.flash("Succesful authentication")
                 flask.session['logged_in'] = user.id
-                return flask.redirect(flask.url_for('home'))
+                return flask.redirect(flask.url_for('home_page'))
                 
         flask.flash('Invalid username/password')  # this will only happen if auth failed
 
@@ -63,4 +64,4 @@ def login():
 @app.route('/logout')
 def logout():
     flask.session['logged_in'] = ''
-    return flask.redirect(flask.url_for('home'))
+    return flask.redirect(flask.url_for('home_page'))

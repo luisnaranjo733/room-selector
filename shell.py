@@ -25,19 +25,27 @@ if __name__ == '__main__':
     flag = argv[1]
 
     if flag == '-c':
-        ut = UserType()
-        ut.name = 'admin'
-        db_session.add(ut)
+        ut_common = UserType()
+        ut_common.name = 'common'
+        db_session.add(ut_common)
+
+        ut_admin = UserType()
+        ut_admin.name = 'admin'
+        db_session.add(ut_admin)
 
 
-        u = User(name='luis', email='luis@gmail.com', password_hash='test')
-        u.type = ut
-        db_session.add(u)
+        u_admin = User(name='luis', email='luis@gmail.com', password_hash='test')
+        u_admin.type = ut_admin
+        db_session.add(u_admin)
+
+        u_common = User(name='nick', email='nick@gmail.com', password_hash='test')
+        u_common.type = ut_common
+        db_session.add(u_common)
 
 
         h = House()
         h.name =  'phi delts'
-        h.manager = u
+        h.manager = u_admin
         db_session.add(h)
 
 
