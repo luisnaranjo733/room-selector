@@ -4,5 +4,16 @@
       <h1 id="title">
         Commonplace: Manager
       </h1>
+
+      {% if selectionOn %}
+      <h2>Room selection is <span style="color:green;">on</span></h2>
+      <a href="/endit" class="btn btn-primary" role="button">End the process</a>
+      {% else %}
+      <h2>Room selection is <span style="color:red;">off</span></h2>
+      <a href="/startit" class="btn btn-primary" role="button">Start the process</a>
+      {% endif %}
+
+
+
 {% endblock %}
 

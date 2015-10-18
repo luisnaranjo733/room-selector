@@ -3,6 +3,7 @@ import sys
 
 from roomSelector.database import init_db, db_session
 from roomSelector.models import User
+import roomSelector
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 selection_file = os.path.join(PROJECT_ROOT, 'selectionOn.txt')
@@ -20,5 +21,6 @@ def startSelection():
     db_session.commit()
     
 def stopSelection():
-    os.remove(selection_file)
+    if os.path.exists(selection_file):
+        os.remove(selection_file)
 

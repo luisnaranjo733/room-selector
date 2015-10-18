@@ -4,10 +4,12 @@ from roomSelector import app
 from roomSelector.models import User
 from roomSelector.database import db_session
 
+import state
+
+
 
 @app.route('/')
 def home_page():
-    return flask.render_template('cover.html')
     user_id = flask.session.get('logged_in')
     user = None
     user_is_admin = None
@@ -15,10 +17,20 @@ def home_page():
         user = User.query.filter(User.id == user_id).first()
         is_admin = user.type.name == 'admin'
         if is_admin:
-            return flask.render_template('manager.html', user=user)
+            return flask.render_template('manager.html', user=user, selectionOn=state.selectionStatus())
         else:
             return flask.render_template('member.html', user=user)
-    return flask.render_template('gateway.html', user=user)
+    return flask.render_template('cover.html')
+
+@app.route('/endit')
+def endit():
+    state.stopSelection()
+    return flask.redirect(flask.url_for('home_page'))
+
+@app.route('/startit')
+def startit():
+    state.startSelection()
+    return flask.redirect(flask.url_for('home_page'))
 
 @app.route('/member')
 def member_page():
