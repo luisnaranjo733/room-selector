@@ -39,25 +39,26 @@ def startit():
     state.startSelection()
     return flask.redirect(flask.url_for('home_page'))
 
-@app.route('/member')
-def member_page():
-    return flask.render_template('member.html')
-
-@app.route('/manager')
-def manager_page():
-    return flask.render_template('manager.html')
-
 @app.route('/rooms')
 def room_page():
-    return flask.render_template('rooms.html')
+    params = {
+        'people': User.query.filter (User.is_live_in == True).order_by(User.house_points.desc()),
+    }
+    return flask.render_template('rooms.html', **params)
 
 @app.route('/chores')
 def chores_page():
-    return flask.render_template('chores.html')
+    params = {
+        'people': User.query.filter (User.is_live_in == True).order_by(User.house_points.desc()),
+    }
+    return flask.render_template('chores.html', **params)
 
 @app.route('/reimbursements')
 def reimbursements_page():
-    return flask.render_template('reimbursements.html')
+    params = {
+        'people': User.query.filter (User.is_live_in == True).order_by(User.house_points.desc()),
+    }
+    return flask.render_template('reimbursements.html', **params)
 
 
 @app.route('/login', methods=['POST', 'GET'])
