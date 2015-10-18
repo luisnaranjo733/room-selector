@@ -9,6 +9,7 @@ from roomSelector.database import db_session
 def home():
     users = User.query.all()
     return flask.render_template('home.html', users=users)
+
  
 @app.route('/login', methods=['POST', 'GET'])
 def login():

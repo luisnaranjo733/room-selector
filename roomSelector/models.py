@@ -1,6 +1,6 @@
 
 from sqlalchemy import Column, ForeignKey
-from sqlalchemy.types import Integer, String
+from sqlalchemy.types import Integer, String, Boolean
 from sqlalchemy.orm import relationship
 from werkzeug import generate_password_hash, check_password_hash
 
@@ -15,6 +15,8 @@ class User(Base):
     phone = Column(String(20))
 
     house_points = Column(Integer)
+    is_live_in = Column(Boolean)
+    has_selected = Column(Boolean)
 
     password_hash = Column(String(54))
 
@@ -25,6 +27,8 @@ class User(Base):
     room = relationship('Room', backref='user')
 
     def __init__(self, **kwargs):
+        self.has_selected = False
+        self.is_live_in = True # can be overridden in kwargs
         for attr in kwargs:
             if attr == 'password_hash':
                 self.setPassword(kwargs[attr])  # store password as a hash
@@ -62,7 +66,7 @@ class Room(Base):
 
     def __repr__(self):
         return '<Room %r>' % (self.id)
-        
+
 
 class House(Base):
     __tablename__ = 'house'
